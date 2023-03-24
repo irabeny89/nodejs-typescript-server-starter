@@ -57,5 +57,5 @@
 			}
 		}
 	],
-	"ignorePatterns": ["dist", "node_modules", "dev-test", "test-files"]
+	"ignorePatterns": ["dist", "docs", "node_modules", "dev-test", "test-files"]
 }
