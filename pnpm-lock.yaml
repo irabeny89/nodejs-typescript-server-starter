@@ -14,7 +14,6 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.56.0
   '@typescript-eslint/parser': ^5.56.0
   body-parser: ^1.20.2
-  changesets: ^1.0.2
   cors: ^2.8.5
   cz-conventional-changelog: ^3.3.0
   dotenv: ^16.0.3
@@ -62,7 +61,6 @@ devDependencies:
   '@types/node': 18.15.6
   '@typescript-eslint/eslint-plugin': 5.56.0_2hcjazgfnbtq42tcc73br2vup4
   '@typescript-eslint/parser': 5.56.0_j4766f7ecgqbon3u7zlxn5zszu
-  changesets: 1.0.2
   cz-conventional-changelog: 3.3.0
   eslint: 8.36.0
   eslint-config-prettier: 8.8.0_eslint@8.36.0
@@ -2886,10 +2884,6 @@ packages:
       sentence-case: 3.0.4
       snake-case: 3.0.4
       tslib: 2.5.0
-    dev: true
-
-  /changesets/1.0.2:
-    resolution: {integrity: sha512-lnXvvqJEcK0z/6RtwKNLbejazl+Hxd1bocMcNgfLHWb4rGxuqkO/LdeGNzwIx3jHj+fNWZ6AGgK5AqNBwva4Xg==}
     dev: true
 
   /char-regex/1.0.2:
