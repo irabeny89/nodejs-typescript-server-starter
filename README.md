@@ -9,6 +9,7 @@ Many tools already installed; this can be extended even further:
 
 - Code Testing
 - Security Checking
+- Hashing and Encryption
 - Release Versioning
 - Angular Semantic Versioning
 - Code Documentations
