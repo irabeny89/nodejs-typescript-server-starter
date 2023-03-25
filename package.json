@@ -10,20 +10,28 @@
 		"precompile": "pnpm clean && pnpm lint && pnpm test && pnpm generate & pnpm docs",
 		"lint": "eslint src",
 		"test": "jest",
+		"pentest": "env-cmd pnpm snyk test",
 		"clean": "rm -rf dist docs",
 		"generate": "graphql-codegen --config codegen.yml",
 		"generate:watch": "graphql-codegen -w --config codegen.yml",
 		"compile": "tsc",
 		"start": "node ./dist/index.js",
 		"dev": "tsnd --rs --transpile-only --respawn src/index.ts",
-		"docs": "typedoc --options typedoc.config.cjs"
+		"docs": "pnpm typedoc --options typedoc.config.cjs"
 	},
-	"keywords": ["Typescript", "Nodejs", "Expressjs", "Starter", "Graphql"],
+	"keywords": [
+		"Typescript",
+		"Nodejs",
+		"Expressjs",
+		"Starter",
+		"Graphql"
+	],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"@apollo/server": "^4.5.0",
 		"@babel/core": ">=7.0.0-beta.0 <8.0.0",
+		"@changesets/cli": "^2.26.0",
 		"@types/body-parser": "^1.19.2",
 		"@types/cors": "^2.8.13",
 		"@types/express": "^4.17.17",
@@ -53,6 +61,7 @@
 		"husky": "^8.0.3",
 		"jest": "^29.5.0",
 		"prettier": "^2.8.7",
+		"snyk": "^1.1127.0",
 		"ts-jest": "^29.0.5",
 		"ts-node": "^10.9.1",
 		"ts-node-dev": "^2.0.0",
