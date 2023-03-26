@@ -1,5 +1,5 @@
 {
-	"name": "Nodejs Typescript Server Starter",
+	"name": "nodejs-typescript-server-starter",
 	"version": "0.1.0",
 	"description": "A starter repo for a Typescript-Nodejs-Graphql server app.",
 	"main": "./dist/index.js",
