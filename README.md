@@ -60,7 +60,7 @@ Run the script to run test:
 pnpm test
 ```
 
-To test vulnerabilties in packages we can use package managers audit command like `npm audit` or `pnpm audit` etc. But we have Snyk setup(CI and on local development) to tests for our repository vulnerabilities.
+To test vulnerabilties in packages we can use package managers audit command like `npm audit` or `pnpm audit` etc. But we have Snyk setup locally and GitHub CodeQL (Security tab on GitHub) on Remote to scan for our repository vulnerabilities.
 Run the script setup in [package.json](package.json) file
 
 ```bash
