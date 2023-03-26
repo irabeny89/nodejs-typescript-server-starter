@@ -14,16 +14,34 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Use Nodejs
+      - name: Setup Node.js 18
         uses: actions/setup-node@v3
         with:
-            cache: "pnpm"
-            node-version: 18
+          node-version: 18
 
       - name: Install PNPM
         uses: pnpm/action-setup@v2
+        id: pnpm-install
         with:
-            version: 7
+          version: 7.25.0
+          run_install: false
+
+      - name: Get PNPM Store Directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+          
+      - name: Setup PNPM Cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: $${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
             
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm test
+      - name: Install Dependencies
+        run: pnpm install
+      
+      - name: Run Tests
+        run: pnpm test
