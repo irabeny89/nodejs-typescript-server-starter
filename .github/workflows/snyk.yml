@@ -1,53 +1,25 @@
-name: Snyk Security Check
+name: PNPM-PR-Snyk-Check
 
-on: [push, pull_request]
-
+on: 
+  pull_request:
+    types: [opened,reopened,synchronized]
+  push:
+    branches:
+      - master
+  
 jobs:
-  security:
+  pnpm_snyk_check:
     runs-on: ubuntu-latest
+    name: Snyk post processing
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install PNPM
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
-        with:
-          version: 7.25.0
-          run_install: false
-
-      - name: Get PNPM Store Directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: Setup PNPM Cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: $${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install Dependencies
-        run: pnpm install
-    
-      - name: Checkout Main Branch
-        uses: actions/checkout@main
-        
-      - name: Snyk post processing - PNPM Snyk Delta
-        id: pnpm-snyk-delta
-        uses: snyk-tech-services/github-actions-pnpm-snyk@master
-        with:
-          snykToken: ${{ secrets.SNYK_TOKEN }}
-          pnpmLockfilePath: "tests/fixtures/with-tslint/"
-          snykOrganization: playground
-          # snykArguments: "--severity-threshold=high"
-          # breakBuild: false
-          # fullScan: false
+    - uses: actions/checkout@v2
+    - name: pnpm Snyk Delta
+      id: pnpm-snyk-delta
+      uses: snyk-tech-services/github-actions-pnpm-snyk@main
+      with:
+        snykToken: ${{ secrets.SNYK_TOKEN }}
+        pnpmLockfilePath: "tests/fixtures/with-tslint/"
+        snykOrganization: playground
+        snykArguments: "--severity-threshold=high"
+        breakBuild: false
+        # fullScan: false
