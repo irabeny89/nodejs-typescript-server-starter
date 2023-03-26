@@ -1,5 +1,11 @@
 # Nodejs Typescript Server Starter
 
+## 0.1.1
+
+### Patch Changes
+
+- a1789af: update ci configs
+
 ## 0.1.0
 
 ### Minor Changes
