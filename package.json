@@ -7,7 +7,7 @@
 		"prepare": "node no_husky_in_ci.js",
 		"prestart": "pnpm compile",
 		"predev": "pnpm generate",
-		"precompile": "pnpm clean && pnpm lint && pnpm test && pnpm generate & pnpm docs",
+		"precompile": "pnpm clean && pnpm generate && pnpm lint && pnpm test & pnpm docs",
 		"lint": "eslint src",
 		"test": "jest",
 		"pentest": "env-cmd pnpm snyk test",
