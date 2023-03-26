@@ -20,13 +20,13 @@ jobs:
 
       - name: Use Nodejs ${{ matrix.node-version }}
         uses: actions/setup-node@v3
-          with:
+        with:
             node-version: ${{ matrix.node-version }}
             cache: "pnpm"
 
       - name: Install PNPM
-        uses: pnpm/actions-setup@v2
-          with:
+        uses: pnpm/action-setup@v2
+        with:
             version: 7
             
       - run: pnpm install --frozen-lockfile
